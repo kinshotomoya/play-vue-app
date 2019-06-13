@@ -1,0 +1,17 @@
+# 開発環境用のdokcer-compose
+version: "3"
+services:
+  play-app:
+    build: ./app/
+    container_name: play-container
+    volumes:
+      # TODO:どのファイルをコンテナ内にマウントするののか
+      # このプロジェクト自体をコンテナ内の/rootディレクトリにマウントする
+      - ../play-vue-app:/play-vue-app
+    working_dir: /play-vue-app
+    command: "sbt run"
+    ports:
+      - "9000:9000"
+    expose:
+      - "9000"
+    tty: true

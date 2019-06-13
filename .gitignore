@@ -7,3 +7,6 @@ target
 gradle
 gradlew*
 *.gradle
+
+# log関連
+logs/
