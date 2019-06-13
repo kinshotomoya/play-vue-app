@@ -14,4 +14,24 @@ services:
       - "9000:9000"
     expose:
       - "9000"
+    networks:
+      - play-network
     tty: true
+  vue-app:
+    build: ./front
+    container_name: vue-container
+    volumes:
+      # vueアプリ全部マウントする
+      - ./front:/app/
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: "npm run dev"
+    ports:
+      - "8080:8080"
+    networks:
+      - play-network
+    tty: true
+
+networks:
+  play-network:
+    external: true
