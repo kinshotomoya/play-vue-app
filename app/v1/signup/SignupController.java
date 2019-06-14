@@ -2,6 +2,7 @@
 package v1.signup;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.*;
 import play.libs.Json;
 
@@ -29,10 +30,9 @@ public class SignupController extends Controller {
     }
 
     public Result create(Http.Request request) {
-        String name = request().getQueryString("name");
-        System.out.println(name);
-
-        return ok("成功したよ");
+        JsonNode accountInfo = request.body().asJson();
+        System.out.println(accountInfo);
+        return ok(Json.toJson(accountInfo));
     }
 
 
