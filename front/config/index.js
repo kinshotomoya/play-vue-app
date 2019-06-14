@@ -16,7 +16,7 @@ module.exports = {
       // play-container:9000/にリクエストを送る処理をしてくれる
       // 通信したいコンテナ名を記述する
       '/api': {
-        'target': 'http://play-container:9000',
+        'target': 'http://play-app:9000',
         'pathRewrite': {'^/api': ''},
         'changeOrigin': true,
         'secure': false

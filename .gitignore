@@ -10,6 +10,6 @@ gradlew*
 
 # log関連
 logs/
-
+data/
 # front関連
 node_modules/
