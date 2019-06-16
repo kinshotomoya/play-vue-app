@@ -2,6 +2,8 @@
 package v1.signup;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import play.filters.csrf.RequireCSRFCheck;
 import play.mvc.*;
 import play.libs.Json;
 
@@ -28,9 +30,10 @@ public class SignupController extends Controller {
         return ok(Json.toJson("{id: 1, name: 'tomoya'}"));
     }
 
+    @RequireCSRFCheck
     public Result create(Http.Request request) {
-        String name = request().getQueryString("name");
-        System.out.println(name);
+        JsonNode accountInfo = request.body().asJson();
+        System.out.println(accountInfo);
 
         return ok("成功したよ");
     }

@@ -4,7 +4,9 @@
 
 # An example controller showing a sample home page
 # 初期ページを、ビルドされたpublic/bundle/index.htmlに設定
-GET     /                           controllers.Assets.at(path="/public/bundle/", file="index.html")
+#GET     /                           controllers.Assets.at(path="/public/bundle/", file="index.html")
+
+GET     /                           controllers.LoginController.index(request:Request)
 
 # テストでindexアクションをgetする。きちんと疎通できるかの確認
 # 疎通確認
@@ -13,7 +15,6 @@ GET      /v1                         v1.signup.SignupController.index()
 GET      /v1/test                         v1.signup.SignupController.test(request:Request)
 
 # サインアップ時はcsrfトークン不要
-+nocsrf
 POST     /v1/sign_up                 v1.signup.SignupController.create(request:Request)
 
 # webpackでビルドされたjsファイル（/public/bundle/static/js/以下）のファイルを読み込めるように設定

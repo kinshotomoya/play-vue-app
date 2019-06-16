@@ -15,8 +15,11 @@ module.exports = {
       // pathRewriteは、例えば、axios.get('/api/v1/sign_up')でリクエストすると、/apiを削除して、
       // play-container:9000/にリクエストを送る処理をしてくれる
       // 通信したいコンテナ名を記述する
+      // NOTE: webサーバでproxyして、cors設定をするのではなく、appサーバでcorsの設定をするので
+      // 以下の設定は、不要
+      // 開発時しか使わない
       '/api': {
-        'target': 'http://play-app:9000',
+        'target': 'http://play-container:9000',
         'pathRewrite': {'^/api': ''},
         'changeOrigin': true,
         'secure': false
